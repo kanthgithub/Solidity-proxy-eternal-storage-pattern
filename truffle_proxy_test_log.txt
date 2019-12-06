@@ -1,0 +1,223 @@
+truffle(development)> var proxyInst = await ArithmeticStorageProxy.deployed()
+undefined
+truffle(development)> proxyInst.address
+'0x86A6D046A6E012c04DDA07256dee4D32032Eb91D'
+truffle(development)> proxyInst.get
+proxyInst.getImplementation  proxyInst.getPastEvents      
+
+truffle(development)> proxyInst.getImplementation
+[Function] {
+  call: [Function],
+  sendTransaction: [Function],
+  estimateGas: [Function],
+  request: [Function]
+}
+truffle(development)> proxyInst.getImplementation()
+'0x48fca02B61dd72F6b6b927dE9404ec3D9e8195d4'
+truffle(development)> var arith = await Arithmetic.deployed()
+undefined
+truffle(development)> arith.address
+'0x48fca02B61dd72F6b6b927dE9404ec3D9e8195d4'
+truffle(development)> testp.methods
+{
+  'name()': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'version()': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'implementation()': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'initialize(string)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'add(uint256,uint256)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'subtract(uint256,uint256)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'div(uint256,uint256)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'multiply(uint256,uint256)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'doubleAdder(uint256,uint256)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'getResult()': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  },
+  'getResultFromMap(string)': [Function] {
+    call: [Function],
+    sendTransaction: [Function],
+    estimateGas: [Function],
+    request: [Function]
+  }
+}
+truffle(development)> testp.methods.
+testp.methods.__defineGetter__      testp.methods.__defineSetter__      testp.methods.__lookupGetter__
+testp.methods.__lookupSetter__      testp.methods.__proto__             testp.methods.constructor
+testp.methods.hasOwnProperty        testp.methods.isPrototypeOf         testp.methods.propertyIsEnumerable
+testp.methods.toLocaleString        testp.methods.toString              testp.methods.valueOf
+
+truffle(development)> testp.add(1,2)
+{
+  tx: '0x95798cfb23bfcf8308c5bb1d5bc4d1321adb76d75dd10de69cf678f448082715',
+  receipt: {
+    transactionHash: '0x95798cfb23bfcf8308c5bb1d5bc4d1321adb76d75dd10de69cf678f448082715',
+    transactionIndex: 0,
+    blockHash: '0x87ed43d12e22a500769d92b7499d43b8365e5189a657d7e2ba40a8d4c4177f39',
+    blockNumber: 8,
+    from: '0x60b3187485da0926e552aebb957decd4cd6883a2',
+    to: '0x86a6d046a6e012c04dda07256dee4d32032eb91d',
+    gasUsed: 85702,
+    cumulativeGasUsed: 85702,
+    contractAddress: null,
+    logs: [ [Object] ],
+    status: true,
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000001000000000000000000000000000000000400800000800000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000',
+    v: '0x1b',
+    r: '0xe8cf49a1d79b3757782d30b974be4cc47d08540de06ab7c2b5bcb8c53d557347',
+    s: '0x580e0a849c5d4f77c05dec17d21dafe1fc905749e650fa4b415a23d848c1cced',
+    rawLogs: [ [Object] ]
+  },
+  logs: [
+    {
+      logIndex: 0,
+      transactionIndex: 0,
+      transactionHash: '0x95798cfb23bfcf8308c5bb1d5bc4d1321adb76d75dd10de69cf678f448082715',
+      blockHash: '0x87ed43d12e22a500769d92b7499d43b8365e5189a657d7e2ba40a8d4c4177f39',
+      blockNumber: 8,
+      address: '0x86A6D046A6E012c04DDA07256dee4D32032Eb91D',
+      type: 'mined',
+      id: 'log_e219575c',
+      event: 'addEvent',
+      args: [Result]
+    }
+  ]
+}
+
+truffle(development)> var result = testp.multiply(21,12);
+undefined
+truffle(development)> result
+{
+  tx: '0xddc02df43bd1036f911e96be2666fa547af8eeba4c77629e3f6ab77fbee7c413',
+  receipt: {
+    transactionHash: '0xddc02df43bd1036f911e96be2666fa547af8eeba4c77629e3f6ab77fbee7c413',
+    transactionIndex: 0,
+    blockHash: '0x13f4c12595f4de5c377767e86baf632df9c06adc6870f8a45bf815acc049e649',
+    blockNumber: 9,
+    from: '0x60b3187485da0926e552aebb957decd4cd6883a2',
+    to: '0x86a6d046a6e012c04dda07256dee4d32032eb91d',
+    gasUsed: 68901,
+    cumulativeGasUsed: 68901,
+    contractAddress: null,
+    logs: [],
+    status: true,
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+    v: '0x1c',
+    r: '0x894889bd260a13f1acc77bcc906e4888a2bc214c5aab7d7fc37db2af486c1411',
+    s: '0xb8def0a9eb540823660664784c2bda5925f9c804bca2b138846d1c266601cc8',
+    rawLogs: []
+  },
+  logs: []
+}
+truffle(development)> var result =await testp.multiply(21,12);
+Thrown:
+evalmachine.<anonymous>:1
+  await testp.multiply(21,12);
+                             ^
+
+SyntaxError: Unexpected token ;
+truffle(development)> var result =await testp.multiply(21,12)
+undefined
+truffle(development)> result
+{
+  tx: '0x7b71311596adf94744fed86e2a69fd15da34d5e0f03d431825ff3d868e1f08c9',
+  receipt: {
+    transactionHash: '0x7b71311596adf94744fed86e2a69fd15da34d5e0f03d431825ff3d868e1f08c9',
+    transactionIndex: 0,
+    blockHash: '0x6891269734d5f21e66f3db1bf71eb56cec134c1ba4c6dc7194dbf50cdb83ef1e',
+    blockNumber: 10,
+    from: '0x60b3187485da0926e552aebb957decd4cd6883a2',
+    to: '0x86a6d046a6e012c04dda07256dee4d32032eb91d',
+    gasUsed: 53901,
+    cumulativeGasUsed: 53901,
+    contractAddress: null,
+    logs: [],
+    status: true,
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+    v: '0x1b',
+    r: '0xbbb1fa66dc6649887bce6db994479be50abb1e9c64334e2ea76984197173eb9c',
+    s: '0x57857773a491f273c90e1a20c9b4c9e63f238ac24cf256651bd7d067e23a9582',
+    rawLogs: []
+  },
+  logs: []
+}
+truffle(development)> testp.getResult
+testp.getResult         testp.getResultFromMap  
+
+truffle(development)> testp.getResult()
+[
+  BN {
+    negative: 0,
+    words: [ 3, <1 empty item> ],
+    length: 1,
+    red: null
+  },
+  BN {
+    negative: 0,
+    words: [ 252, <1 empty item> ],
+    length: 1,
+    red: null
+  },
+  BN {
+    negative: 0,
+    words: [ 252, <1 empty item> ],
+    length: 1,
+    red: null
+  }
+]
+truffle(development)> testp.getResultFromMap('add')
+BN { negative: 0, words: [ 3, <1 empty item> ], length: 1, red: null }
+truffle(development)> testp.getResultFromMap('multiply')
+BN {
+  negative: 0,
+  words: [ 252, <1 empty item> ],
+  length: 1,
+  red: null
+}
+truffle(development)> 
