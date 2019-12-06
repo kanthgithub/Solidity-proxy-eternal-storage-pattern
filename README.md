@@ -21,6 +21,7 @@
 User ---- tx --- ArithmeticStorageProxy
                         |
                         | ----------> ArithmeticStorage
+
 ```
 
 
