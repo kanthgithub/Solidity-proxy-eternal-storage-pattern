@@ -5,7 +5,7 @@ import './ArithmeticStorage.sol';
 import '../proxy/UpgradeabilityProxy.sol';
 
 /**
- * @title ArithmeticProxy
+ * @title ArithmeticStorageProxy
  * @dev This proxy holds the storage of the Arithmetic contract and
  * delegates every call to the current implementation set.
  * Besides, it allows to upgrade the Arithmetic's behaviour towards further implementations,
