@@ -23,23 +23,6 @@ User ---- tx --- ArithmeticStorageProxy
 
 ```
 
-
-```
-    =========================          -------     =======================
-    ║  ArithmeticStorage     ║         | Proxy |   ║ UpgradeabilityStorage ║
-     =========================          -------     =======================
-              ↑            ↑                            ↑                ↑            
-              |            |                            |            ---------------------
-          ----------       |                            |           | UpgradeabilityProxy |
-         | Arithmetic |    |                            |            ---------------------
-          ----------       |                            |               ↑
-              ↑            |                       
-              |            |                      
-          --------------   |                       
-         | Arithmetic_v1|  |                             ↑
-          --------------   |______ -------------------------
-                                  | ArithmeticStorageProxy |
-                                   -------------------------
 ```
 
 ![UML Diagram](./Solidity-proxy-eternal-storage-pattern.svg)
