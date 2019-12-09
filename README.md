@@ -23,8 +23,6 @@ User ---- tx --- ArithmeticStorageProxy
 
 ```
 
-```
-
 ![UML Diagram](./Solidity-proxy-eternal-storage-pattern.svg)
 
 ## Proxy Contract:
