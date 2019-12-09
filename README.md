@@ -42,6 +42,9 @@ User ---- tx --- ArithmeticStorageProxy
                                    -------------------------
 ```
 
+![UML Diagram](./Solidity-proxy-eternal-storage-pattern.svg)
+<img src="./Solidity-proxy-eternal-storage-pattern.svg">
+
 ## Proxy Contract:
 
 1. Proxy (Proxy with default callback and assembly code)
