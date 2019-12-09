@@ -1,6 +1,5 @@
 # Solidity-Eternal-Proxy
 
-
 ## Storage Contracts:
 
 1. ArithmeticStorage (Storage contract - storage for Arithmetic)
@@ -385,6 +384,126 @@ truffle(development)> proxInst.getResult()
 ]
 truffle(development)> 
 ```
+
+### check implementation address:
+
+- address of Arithmetic contract should match with the implementation property of ArithmeticStorageProxy
+- This can be verified via:
+
+```js
+truffle(development)> Arithmetic.address
+'0xcC5B831A6Fd90F4F1A9c16224282d4842f38038E'
+truffle(development)> arithmeticStorageProxy.getImplementation()
+'0xcC5B831A6Fd90F4F1A9c16224282d4842f38038E'
+truffle(development)> 
+```
+
+### Add new functionality to Arithmetic and upgrade the proxy instance:
+
+ - Add new method to Arithmetic.sol 
+ - redeploy the Arithmetic.sol 
+    - Add new migration script with new version number for Arithmetic
+      - 4_Arithmetic_migration.js
+    - deploy via migrate command
+
+    ```js
+    truffle(development)> migrate Arithmetic
+
+    Compiling your contracts...
+    ===========================
+    > Everything is up to date, there is nothing to compile.
+
+    Starting migrations...
+    ======================
+    > Network name:    'development'
+    > Network id:      1575802462380
+    > Block gas limit: 0x6691b7
+
+
+    4_Arithmetic_migration.js
+    =========================
+
+      Replacing 'Arithmetic'
+      ----------------------
+      > transaction hash:    0x0b362dabdac5c479daeaf0642ca4d5c6f9e9aeac34cae87bead5fa21a3e1cf98
+      > Blocks: 0            Seconds: 0
+      > contract address:    0x90cf621F7A1CB92033d3dE12330304025016667F
+      > block number:        9
+      > block timestamp:     1575803377
+      > account:             0x5B9997549483a513821D909Dcb880742D9E3eb83
+      > balance:             99.943394
+      > gas used:            922440
+      > gas price:           20 gwei
+      > value sent:          0 ETH
+      > total cost:          0.0184488 ETH
+
+    arithmetic contract is deployed : 0x90cf621F7A1CB92033d3dE12330304025016667F
+    deployed arithmetic with address: 0x90cf621F7A1CB92033d3dE12330304025016667F
+    deployed arithmetic with constructor data: 0xf62d18880000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f41726974686d657469634c6f6769630000000000000000000000000000000000
+
+      > Saving migration to chain.
+      > Saving artifacts
+      -------------------------------------
+      > Total cost:           0.0184488 ETH
+
+
+    Summary
+    =======
+    > Total deployments:   1
+    > Final cost:          0.0184488 ETH
+
+    truffle(development)> 
+    ```
+
+  - upgrade the implementation to version-2 of Arithmetic
+
+  ```js
+    truffle(development)> arithmeticStorageProxy.upgradeTo('2',Arithmetic.address)
+  { tx:
+    '0xf60ea0ba456f000641c8e4763af8a0416c9a59b601e37055771a33a6e84fac50',
+    receipt:
+    { transactionHash:
+        '0xf60ea0ba456f000641c8e4763af8a0416c9a59b601e37055771a33a6e84fac50',
+      transactionIndex: 0,
+      blockHash:
+        '0xf470538a5c6328726ceb404e544532887cb6f94cf0e7f61051b62bb163122284',
+      blockNumber: 11,
+      from: '0x5b9997549483a513821d909dcb880742d9e3eb83',
+      to: '0x59f9b9e1037db8e9892154cd7bc825a08c2a4743',
+      gasUsed: 42310,
+      cumulativeGasUsed: 42310,
+      contractAddress: null,
+      logs: [ [Object] ],
+      status: true,
+      logsBloom:
+        '0x00000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000800000000000000080000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000008000000000000001000000000000000000000000000000000000000080000000000000000000000',
+      v: '0x1b',
+      r:
+        '0x5e8ca4c577219152a778f14820fd8d8f96908836ae949443defabccd1c6ec94e',
+      s:
+        '0x2e140af4c4cb8f80bb8eb96e0cee4f13ef62e1926ff227911e7ab3c06bae2d5d',
+      rawLogs: [ [Object] ] },
+    logs:
+    [ { logIndex: 0,
+        transactionIndex: 0,
+        transactionHash:
+          '0xf60ea0ba456f000641c8e4763af8a0416c9a59b601e37055771a33a6e84fac50',
+        blockHash:
+          '0xf470538a5c6328726ceb404e544532887cb6f94cf0e7f61051b62bb163122284',
+        blockNumber: 11,
+        address: '0x59f9b9E1037db8e9892154cD7BC825a08c2a4743',
+        type: 'mined',
+        id: 'log_1ae6c5de',
+        event: 'Upgraded',
+        args: [Result] } ] }
+  truffle(development)> Arithmetic.address
+  '0x90cf621F7A1CB92033d3dE12330304025016667F'
+  truffle(development)> arithmeticStorageProxy.getImplementation()
+  '0x90cf621F7A1CB92033d3dE12330304025016667F'
+  truffle(development)> 
+  ```
+
+
 
 ### upgrade:
 
