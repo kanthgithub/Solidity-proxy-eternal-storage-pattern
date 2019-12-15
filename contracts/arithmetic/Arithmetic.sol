@@ -6,6 +6,9 @@ contract Arithmetic is UpgradeableArithmeticStorage {
 
     event addEvent(uint256 indexed sum, uint256 a, uint256 b);
     event subtractEvent(uint256 indexed substract, uint256 a, uint256 b);
+    event multiplyEvent(uint256 indexed product, uint256 a, uint256 b);
+    event divisionEvent(uint256 indexed dividend, uint256 a, uint256 b);
+    
      string public name;
 
      function initialize(string memory  _name) public {
@@ -33,6 +36,7 @@ contract Arithmetic is UpgradeableArithmeticStorage {
         uint256 result = a/b;
         resultArray.push(result);
         resultmap['div'] = result;
+        emit divisionEvent(result,a,b);
         return result;
     }
 
@@ -41,21 +45,7 @@ contract Arithmetic is UpgradeableArithmeticStorage {
         uint256 result = a*b;
         resultArray.push(result);
         resultmap['multiply'] = result;
-        return result;
-    }
-
-
-    function doubleAdder(uint256 a, uint256 b) public returns(uint256) {
-        uint256 result = 2*(a+b);
-        resultArray.push(result);
-        resultmap['doubleAdder'] = result;
-        return result;
-    }
-
-    function plussquare(uint256 a, uint256 b) public returns(uint256) {
-        uint256 addresult = a+b;
-        uint256 result = addresult * addresult;
-        resultmap['plussquare'] = result;
+        emit multiplyEvent(result,a,b);
         return result;
     }
 

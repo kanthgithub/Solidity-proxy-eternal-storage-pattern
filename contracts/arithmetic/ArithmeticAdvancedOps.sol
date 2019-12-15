@@ -10,7 +10,9 @@ contract ArithmeticAdvancedOps is UpgradeableArithmeticStorage {
     name = _name;
   }
 
-    event CubeEvent(uint256 indexed cube, uint256 a, uint256 b);
+  event CubeEvent(uint256 indexed cube, uint256 a, uint256 b);
+  event doubleAdderEvent(uint256 indexed doubleAdderResult, uint256 a, uint256 b);
+  event plusSquareEvent(uint256 indexed plussquareResult, uint256 a, uint256 b);
 
   function pluscube(uint256 a, uint256 b) public returns(uint256) {
     uint256 addresult = a+b;
@@ -21,11 +23,27 @@ contract ArithmeticAdvancedOps is UpgradeableArithmeticStorage {
     return result;
   }
 
-    function getResult() public view returns(uint256[] memory){
-        return resultArray;
-    }
+  function doubleAdder(uint256 a, uint256 b) public returns(uint256) {
+      uint256 doubleAdderResult = 2*(a+b);
+      resultArray.push(doubleAdderResult);
+      resultmap['doubleAdder'] = doubleAdderResult;
+      emit doubleAdderEvent(doubleAdderResult, a, b);
+      return doubleAdderResult;
+  }
 
-    function getResultFromMap(string memory action) public view returns(uint256){
-        return resultmap[action];
-    }
+  function plussquare(uint256 a, uint256 b) public returns(uint256) {
+      uint256 addresult = a+b;
+      uint256 plussquareResult = addresult * addresult;
+      resultmap['plussquare'] = plussquareResult;
+      emit plusSquareEvent(plussquareResult, a, b);
+      return plussquareResult;
+  }
+
+  function getResult() public view returns(uint256[] memory){
+      return resultArray;
+  }
+
+  function getResultFromMap(string memory action) public view returns(uint256){
+      return resultmap[action];
+  }
 }
