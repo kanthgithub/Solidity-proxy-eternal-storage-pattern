@@ -4,8 +4,10 @@ import './Proxy.sol';
 import './UpgradeabilityStorage.sol';
 
 contract UpgradeabilityProxy is Proxy, UpgradeabilityStorage {
+
   event Upgraded(string version, address indexed implementation);
-  function upgradeTo(string memory version, address implementation) public {
+  
+  function _upgradeTo(string memory version, address implementation) internal {
     require(_implementation != implementation, 'cannot use existing implementation for upgrade');
     _version = version;
     _implementation = implementation;

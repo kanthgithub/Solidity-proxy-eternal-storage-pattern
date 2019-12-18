@@ -5,7 +5,7 @@ contract Proxy {
 
   function() external payable  {
     address _impl = implementation();
-    //require(_impl != address(0),'owner cannot set itself as the implementation address');
+    require(_impl != address(0),'owner cannot set itself as the implementation address');
     bytes memory data = msg.data;
     assembly {
       let ptr := mload(0x40)

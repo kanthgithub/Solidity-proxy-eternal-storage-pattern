@@ -2,7 +2,7 @@ pragma solidity ^0.5.1;
 
 import './Arithmetic.sol';
 import './ArithmeticStorage.sol';
-import '../proxy/UpgradeabilityProxy.sol';
+import '../proxy/OwnedUpgradeabilityProxy.sol';
 
 /**
  * @title ArithmeticStorageProxy
@@ -11,4 +11,4 @@ import '../proxy/UpgradeabilityProxy.sol';
  * Besides, it allows to upgrade the Arithmetic's behaviour towards further implementations,
  * and provides basic authorization control functionalities
  */
-contract ArithmeticStorageProxy is UpgradeabilityProxy, ArithmeticStorage  {}
+contract ArithmeticStorageProxy is OwnedUpgradeabilityProxy, ArithmeticStorage  {}
